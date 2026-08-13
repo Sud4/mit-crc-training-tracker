@@ -323,9 +323,15 @@
 #member-card li {
   display: inline;
 }
-.name {
-  font-size: 30px;
+#request-card ul {
+  list-style: none;
 }
-MenuButton {
-
+#request-card li {
+  display: inline;
+}
+#all-card ul {
+  list-style: none;
+}
+#all-card li {
+  display: inline;
 }
