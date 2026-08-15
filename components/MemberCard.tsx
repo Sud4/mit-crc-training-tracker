@@ -12,15 +12,12 @@ interface Props {
 const MemberCard = ({name, trainings, slug}: Props) => {
     return (
         <Link
-            className={"mt-3"}
             href={`/members/${slug}`}
-            id={"member-card"}
             >
-            <div className={"flex flex-row gap-2 items-center"}>
-                <li><Image src={"/profiles/"+name+".jpg"} alt={name} width={100} height={100} /></li>
-                <li>{name}</li>
-                <li>-</li>
-                <li>{trainings.join(", ")}</li>
+            <div id={"member-card"}>
+                <Image src={"/profiles/"+name+".jpg"} alt={name} width={100} height={100} />
+                <h2>{name} -</h2>
+                <h2>{trainings.join(", ")}</h2>
             </div>
         </Link>
     )

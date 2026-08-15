@@ -12,9 +12,9 @@ const NavBar = () => {
                 </Link>
 
                 <ul>
-                    <Link href={"/Requested"}>Requested</Link>
-                    <Link href={"/Scheduled"}>Scheduled</Link>
-                    <Link href={"/All"}>All</Link>
+                    <Link href={"/requested"}>Requested</Link>
+                    <Link href={"/scheduled"}>Scheduled</Link>
+                    <Link href={"/all"}>All</Link>
                 </ul>
             </nav>
         </header>

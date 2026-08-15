@@ -33,26 +33,19 @@ export const ScheduledCard = ({id, name, kerb, training}:Props) => {
 
         await supabase
             .from("Requests")
-            .update({ status: "cancelled" })
+            .update({ status: "incomplete" })
             .eq("id", id);
 
         router.refresh();
     }
 
     return (
-        <div
-            className={"flex flex-row gap-2 items-center mt-3"}
-            id={"request-card"}
-        >
-            <li>{name}</li>
-            <li>|</li>
-            <li>{kerb}</li>
-            <li>|</li>
-            <li>{training}</li>
-            <li>|</li>
-            <li><button type={"button"} onClick={handleCompletedClick}>Completed</button></li>
-            <li>|</li>
-            <li><button type={"button"} onClick={handleCancelledClick}>Cancelled</button></li>
+        <div id={"card"}>
+            <h2>{name}</h2>
+            <h2>{kerb}</h2>
+            <h2>{training}</h2>
+            <button type={"button"} onClick={handleCompletedClick}>Mark Complete</button>
+            <button type={"button"} onClick={handleCancelledClick}>Mark Incomplete</button>
         </div>
     )
 }

@@ -79,7 +79,7 @@ For any security concern not covered above, fetch the Supabase product security 
 Always discover commands via `--help` — never guess. The CLI structure changes between versions.
 
 ```bash
-supabase --help                    # All top-level commands
+supabase --help                    # all top-level commands
 supabase <group> --help            # Subcommands (e.g., supabase db --help)
 supabase <group> <command> --help  # Flags for a specific command
 ```

@@ -4,13 +4,19 @@ import AllCard from "@/components/AllCard";
 
 async function AllResponses() {
     const supabase = await createClient();
-    const {data: requests} = await supabase.from("Requests").select();
 
-    if(!requests) return <h2>No Requests Yet...</h2>
+    const {data: requests} = await supabase
+        .from("Requests")
+        .select()
+        .order("id", { ascending: true });
+
+    if(!requests || requests.length == 0) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
+        <h3>No Requests Yet...</h3>
+    </div>;
 
     return <pre>
         {requests.map((request) => (
-            <AllCard {...request}/>
+            <AllCard key={request.id} {...request}/>
         ))}
     </pre>
 }
@@ -21,7 +27,7 @@ const Page = () => {
             <header className={"h-auto flex flex-row items-center justify-center"}>
                 <h3>All Requests</h3>
             </header>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
                 <AllResponses/>
             </Suspense>
         </div>
