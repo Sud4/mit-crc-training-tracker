@@ -4,20 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface Props {
+    kerb:string;
     name:string;
     trainings:string[];
-    slug:string;
 }
 
-const MemberCard = ({name, trainings, slug}: Props) => {
+const MemberCard = ({name, trainings, kerb}: Props) => {
+    const kerb_no_at = kerb.split("@")[0];
     return (
         <Link
-            href={`/members/${slug}`}
+            href={`/members/${kerb_no_at}`}
             >
             <div id={"member-card"}>
-                <Image src={"/profiles/"+name+".jpg"} alt={name} width={100} height={100} />
-                <h2>{name} -</h2>
-                <h2>{trainings.join(", ")}</h2>
+                <h3>{name}</h3>
+                <h2> - {trainings.join(", ")}</h2>
             </div>
         </Link>
     )
