@@ -2,7 +2,7 @@ import MemberCard from "@/components/MemberCard";
 import Dropdown from "@/components/Dropdown";
 import {createClient} from "@/lib/server";
 import {Suspense} from "react";
-async function MemberData() {
+async function MembersData() {
     const supabase = await createClient();
 
     const {data: members} = await supabase
@@ -10,7 +10,7 @@ async function MemberData() {
         .select()
         .order("kerb", { ascending: true });
 
-    if(!members) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
+    if(!members || members.length == 0) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
         <h2>No Members Added</h2>
     </div>;
 
@@ -27,7 +27,7 @@ const Page = () => {
                 <h3><Dropdown/></h3>
             </header>
             <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
-                <MemberData/>
+                <MembersData/>
             </Suspense>
         </div>
     )
