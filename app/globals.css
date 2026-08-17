@@ -188,30 +188,23 @@ button:first-of-type {
 }
 #member-page {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, auto);
   grid-template-areas:
     "info training-summary"
-    "all-requests-header all-requests-header"
-    "requests-list requests-list";
+    "all-requests-header all-requests-header";
+  @apply glass;
 }
 
 .info {
   grid-area: info;
-  @apply glass;
 }
 
 .training-summary {
   grid-area: training-summary;
-  @apply glass;
 }
 
 .all-requests-header {
   grid-area: all-requests-header;
-  @apply text-center mt-3 glass;
-}
-
-.requests-list {
-  grid-area: requests-list;
-  @apply glass;
+  @apply text-center mt-3;
 }
