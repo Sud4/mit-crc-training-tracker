@@ -58,7 +58,7 @@ async function MemberData({kerb} : MemberDataProps) {
             </div>
             <div>
                     {memberRequests.map((request) => (
-                        <MemberTrainingsCard {...request}/>
+                        <MemberTrainingsCard key={request.id} {...request}/>
                     ))}
                 </div>
         </div>

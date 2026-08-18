@@ -202,6 +202,7 @@ button:first-of-type {
 
 .training-summary {
   grid-area: training-summary;
+  @apply wrap-normal whitespace-normal
 }
 
 .all-requests-header {
