@@ -1,7 +1,7 @@
 import MemberCard from "@/components/MemberCard";
-import Dropdown from "@/components/Dropdown";
 import {createClient} from "@/lib/server";
 import {Suspense} from "react";
+
 async function MembersData() {
     const supabase = await createClient();
 
@@ -22,14 +22,9 @@ async function MembersData() {
 }
 const Page = () => {
     return (
-        <div>
-            <header className={"h-auto flex flex-row items-center justify-end"}>
-                <h3><Dropdown/></h3>
-            </header>
-            <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
-                <MembersData/>
-            </Suspense>
-        </div>
+        <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
+            <MembersData/>
+        </Suspense>
     )
 }
 export default Page

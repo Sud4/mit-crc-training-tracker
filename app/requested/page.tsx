@@ -11,8 +11,6 @@ async function Requests() {
         .eq("status", "unscheduled")
         .order("id", { ascending: true });
 
-    console.log(requests);
-
     if(requests?.length == 0 || !requests) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
         <h2>No Unscheduled Requests</h2>
     </div>;
