@@ -11,7 +11,7 @@ async function AllResponses() {
         .order("id", { ascending: true });
 
     if(!requests || requests.length == 0) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
-        <h3>No Requests Yet...</h3>
+        <h2>No Requests Yet...</h2>
     </div>;
 
     return <pre>

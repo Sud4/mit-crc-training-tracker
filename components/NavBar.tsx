@@ -6,9 +6,9 @@ const NavBar = () => {
         <header>
             <nav>
                 <Link href={'/'} className={"logo"}>
-                    <Image src={"/logo.jpg"} alt="logo"  width={24} height={24}/>
+                    <Image src={"/logo.png"} alt="logo" width={180} height={90}/>
 
-                    <p>CRC Training Tracker</p>
+                    <p>Training Tracker</p>
                 </Link>
 
                 <ul>
