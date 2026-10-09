@@ -1,0 +1,48 @@
+{
+  "trainings": [
+    {
+      "id": "Printing",
+      "name": "3D Printing"
+    },
+    {
+      "id": "Soldering",
+      "name": "Soldering"
+    },
+    {
+      "id": "Jet",
+      "name": "Water Jet"
+    },
+    {
+      "id": "Mill",
+      "name": "Mill"
+    },
+    {
+      "id": "CNC Mill",
+      "name": "CNC Mill"
+    },
+    {
+      "id": "Lathe",
+      "name": "Lathe"
+    },
+    {
+      "id": "CNC Lathe",
+      "name": "CNC Lathe"
+    },
+    {
+      "id": "MIG",
+      "name": "MIG Welding"
+    },
+    {
+      "id": "Alu MIG",
+      "name": "Aluminum MIG Welding"
+    },
+    {
+      "id": "TIG",
+      "name": "TIG Welding"
+    },
+    {
+      "id": "Laser",
+      "name": "C02 Laser Cutter"
+    }
+  ]
+}

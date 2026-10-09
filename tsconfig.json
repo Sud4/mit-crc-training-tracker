@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/datavals/filters.json": ["./datavals/filters.json"]
     }
   },
   "include": [
