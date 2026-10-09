@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import LightRays from "@/components/LightRays";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </div>
         <main>{children}</main>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
