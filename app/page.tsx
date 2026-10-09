@@ -22,9 +22,11 @@ async function MembersData() {
 }
 const Page = () => {
     return (
-        <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
-            <MembersData/>
-        </Suspense>
+        <div>
+            <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
+                <MembersData/>
+            </Suspense>
+        </div>
     )
 }
 export default Page

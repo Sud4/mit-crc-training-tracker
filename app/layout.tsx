@@ -27,17 +27,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className={"absolute inset-0 top-0 z-[-1] min-h-screen"}>
           <LightRays
               raysOrigin="top-center"
-              raysColor="#750014"
-              raysSpeed={0.5}
-              lightSpread={10}
-              rayLength={3}
-              followMouse={true}
-              mouseInfluence={0.02}
+              raysColor="#ff0000"
+              raysSpeed={0.1}
+              lightSpread={1.4}
+              rayLength={1000}
+              followMouse={false}
+              mouseInfluence={0}
               noiseAmount={0}
-              distortion={0.01}
+              distortion={0}
               pulsating={false}
-              fadeDistance={4}
-              saturation={2}
+              fadeDistance={3}
+              saturation={1}
           />
         </div>
         <main>{children}</main>
