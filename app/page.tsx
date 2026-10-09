@@ -1,32 +1,70 @@
-import MemberCard from "@/components/MemberCard";
-import {createClient} from "@/lib/server";
-import {Suspense} from "react";
+import MemberCard from '@/components/MemberCard';
+import TrainingDropdown from '@/components/TrainingDropdown';
+import { createClient } from '@/lib/server';
+import { Suspense } from 'react';
 
-async function MembersData() {
+type PageProps = {
+    searchParams: Promise<{ training?: string }>;
+};
+
+async function MembersData({ trainingName }: { trainingName?: string }) {
     const supabase = await createClient();
 
-    const {data: members} = await supabase
-        .from("Members")
+    let query = supabase
+        .from('Members')
         .select()
-        .order("kerb", { ascending: true });
+        .order('kerb', { ascending: true });
 
-    if(!members || members.length == 0) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
-        <h2>No Members Added</h2>
-    </div>;
+    if (trainingName && trainingName !== 'all') {
+        query = query.contains('trainings', [trainingName]);
+    }
 
-    return <pre>
-        {members.map((member) => (
-            <MemberCard key={member.kerb} {...member}/>
-        ))}
-    </pre>
-}
-const Page = () => {
+    const { data: members, error } = await query;
+
+    if (error) {
+        return <div className="glass mt-3">Could not load members.</div>;
+    }
+
+    if (!members?.length) {
+        return (
+            <div className="glass mt-3 flex h-auto items-center justify-center">
+                <h2>No Members Found</h2>
+            </div>
+        );
+    }
+
     return (
         <div>
-            <Suspense fallback={<div className={"glass h-auto flex items-center justify-center mt-3"}>Loading...</div>}>
-                <MembersData/>
+            {members.map((member) => (
+                <MemberCard key={member.kerb} {...member} />
+            ))}
+        </div>
+    );
+}
+
+export default async function Page({ searchParams }: PageProps) {
+    const { training } = await searchParams;
+
+    return (
+        <div>
+            <div className="glass">
+                <h3 className="justify-self-center">Filter</h3>
+                <h2 className="inline">Training: </h2>
+                <Suspense fallback={<span>Loading filter...</span>}>
+                    <TrainingDropdown />
+                </Suspense>
+            </div>
+
+            <Suspense
+                key={training ?? 'all'}
+                fallback={
+                    <div className="glass mt-3 flex h-auto items-center justify-center">
+                        Loading...
+                    </div>
+                }
+            >
+                <MembersData trainingName={training} />
             </Suspense>
         </div>
-    )
+    );
 }
-export default Page
