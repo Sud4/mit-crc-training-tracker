@@ -113,7 +113,7 @@
   }
 
   main {
-    @apply mx-auto container flex flex-col py-10;
+    @apply mx-auto container py-10;
   }
 
   h1 {
@@ -208,4 +208,12 @@ button:first-of-type {
 .all-requests-header {
   grid-area: all-requests-header;
   @apply text-center mt-3;
+}
+
+footer {
+  @apply justify-end text-right fixed top-26 right-0
+}
+
+.linkBtn {
+  @apply flex p-2 m-5 bg-mit rounded-md whitespace-pre-line w-25 text-center;
 }
