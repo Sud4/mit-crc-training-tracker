@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import FormBtn from "@/components/FormBtn";
 import LightRays from "@/components/LightRays";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           />
         </div>
         <main>{children}</main>
-        <Footer/>
+        <FormBtn/>
         <Analytics />
         <SpeedInsights />
       </body>

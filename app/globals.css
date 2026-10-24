@@ -43,7 +43,8 @@
   --sidebar-ring: oklch(0.708 0 0);
   --background: #000000;
   --foreground: oklch(0.985 0 0);
-  --color-mit: #750014
+  --color-mit: #750014;
+  --color-mit-bright: #FF1423;
 }
 
 @theme inline {
@@ -96,7 +97,9 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-mit: var(--color-mit);
+  --color-mit-bright: var(--color-mit-bright);
   --bg-mit: var(--color-mit);
+  --bg-mit-bright: var(--color-mit-bright);
 }
 
 @utility glass {
@@ -210,10 +213,10 @@ button:first-of-type {
   @apply text-center mt-3;
 }
 
-footer {
-  @apply justify-end text-right fixed top-26 right-0
+div .linkBtn {
+  @apply justify-end fixed top-26 right-0
 }
 
 .linkBtn {
-  @apply flex p-2 m-5 bg-mit rounded-md whitespace-pre-line w-25 text-center;
+  @apply flex p-2 m-5 bg-mit-bright rounded-md whitespace-pre-line w-25 text-center;
 }
