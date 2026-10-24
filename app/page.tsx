@@ -2,21 +2,35 @@ import MemberCard from '@/components/MemberCard';
 import TrainingDropdown from '@/components/TrainingDropdown';
 import { createClient } from '@/lib/server';
 import { Suspense } from 'react';
+import RoleDropdown from "@/components/RoleDropdown";
 
 type PageProps = {
-    searchParams: Promise<{ training?: string }>;
+    searchParams: Promise<{
+        training?: string;
+        role?: string;
+    }>;
 };
 
-async function MembersData({ trainingName }: { trainingName?: string }) {
+async function MembersData({
+                               training,
+                               role,
+                           }: {
+    training?: string;
+    role?: string;
+}) {
     const supabase = await createClient();
 
     let query = supabase
         .from('Members')
         .select()
-        .order('name', { ascending: true });
+        .order('kerb', { ascending: true });
 
-    if (trainingName && trainingName !== 'all') {
-        query = query.contains('trainings', [trainingName]);
+    if (training) {
+        query = query.contains('trainings', [training]);
+    }
+
+    if (role) {
+        query = query.eq('role', role);
     }
 
     const { data: members, error } = await query;
@@ -26,11 +40,7 @@ async function MembersData({ trainingName }: { trainingName?: string }) {
     }
 
     if (!members?.length) {
-        return (
-            <div className="glass mt-3 flex h-auto items-center justify-center">
-                <h2>No Members Found</h2>
-            </div>
-        );
+        return <div className="glass mt-3">No Members Found</div>;
     }
 
     return (
@@ -43,27 +53,28 @@ async function MembersData({ trainingName }: { trainingName?: string }) {
 }
 
 export default async function Page({ searchParams }: PageProps) {
-    const { training } = await searchParams;
+    const { training, role } = await searchParams;
 
     return (
         <div>
             <div className="glass">
-                <h3 className="justify-self-center">Filter</h3>
-                <h2 className="inline">Training: </h2>
                 <Suspense fallback={<span>Loading filter...</span>}>
-                    <TrainingDropdown />
+                    <div className="flex flex-col gap-2">
+                        <div className="flex items-center gap-2">
+                            <h2>Training:</h2>
+                            <TrainingDropdown />
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <h2>Role:</h2>
+                            <RoleDropdown />
+                        </div>
+                    </div>
                 </Suspense>
             </div>
 
-            <Suspense
-                key={training ?? 'all'}
-                fallback={
-                    <div className="glass mt-3 flex h-auto items-center justify-center">
-                        Loading...
-                    </div>
-                }
-            >
-                <MembersData trainingName={training} />
+            <Suspense key={`${training ?? 'all'}-${role ?? 'all'}`} fallback={<div>Loading...</div>}>
+                <MembersData training={training} role={role} />
             </Suspense>
         </div>
     );

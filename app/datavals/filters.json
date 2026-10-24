@@ -44,5 +44,19 @@
       "id": "Laser",
       "name": "C02 Laser Cutter"
     }
+  ],
+  "roles": [
+    {
+      "id": "New",
+      "name": "New Members"
+    },
+    {
+      "id": "Active",
+      "name": "Active Members"
+    },
+    {
+      "id": "Exec",
+      "name": "Exec Team"
+    }
   ]
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import trainingsJson from '../app/datavals/filters.json';
+import filtersJson from '../app/datavals/filters.json';
 import React from "react";
 
 export default function TrainingDropdown() {
@@ -32,7 +32,7 @@ export default function TrainingDropdown() {
             onChange={handleTrainingFilter}
         >
             <option value="all">All</option>
-            {trainingsJson.trainings.map((training) => (
+            {filtersJson.trainings.map((training) => (
                 <option value={String(training.name)} key={training.id}>
                     {training.name}
                 </option>
