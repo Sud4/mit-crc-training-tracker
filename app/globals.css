@@ -45,6 +45,11 @@
   --foreground: oklch(0.985 0 0);
   --color-mit: #750014;
   --color-mit-bright: #FF1423;
+  --color-exec: #F1C40F;
+  --color-active: #992d22;
+  --color-new: #11806a;
+  --color-inactive: #607d8b;
+  --color-unc: #3498db;
 }
 
 @theme inline {
@@ -100,6 +105,11 @@
   --color-mit-bright: var(--color-mit-bright);
   --bg-mit: var(--color-mit);
   --bg-mit-bright: var(--color-mit-bright);
+  --color-exec: var(--color-exec);
+  --color-active: var(--color-active);
+  --color-new: var(--color-new);
+  --color-inactive: var(--color-inactive);
+  --color-unc: var(--color-unc);
 }
 
 @utility glass {
@@ -219,4 +229,8 @@ div .linkBtn {
 
 .linkBtn {
   @apply flex p-2 m-5 bg-mit-bright rounded-md whitespace-pre-line w-25 text-center;
+}
+
+#chip {
+  @apply text-sm;
 }

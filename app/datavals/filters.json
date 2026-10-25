@@ -57,6 +57,14 @@
     {
       "id": "Exec",
       "name": "Exec"
+    },
+    {
+      "id": "Inactive",
+      "name": "Inactive Member"
+    },
+    {
+      "id": "Unc",
+      "name": "Unc"
     }
   ]
 }
