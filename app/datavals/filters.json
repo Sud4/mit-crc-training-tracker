@@ -48,15 +48,15 @@
   "roles": [
     {
       "id": "New",
-      "name": "New Members"
+      "name": "New Member"
     },
     {
       "id": "Active",
-      "name": "Active Members"
+      "name": "Active Member"
     },
     {
       "id": "Exec",
-      "name": "Exec Team"
+      "name": "Exec"
     }
   ]
 }

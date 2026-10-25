@@ -23,7 +23,7 @@ async function MembersData({
     let query = supabase
         .from('Members')
         .select()
-        .order('kerb', { ascending: true });
+        .order('name', { ascending: true });
 
     if (training) {
         query = query.contains('trainings', [training]);
