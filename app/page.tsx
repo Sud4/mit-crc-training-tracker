@@ -11,13 +11,7 @@ type PageProps = {
     }>;
 };
 
-async function MembersData({
-                               training,
-                               role,
-                           }: {
-    training?: string;
-    role?: string;
-}) {
+async function MembersData({training, role,}: { training?: string; role?: string;}) {
     const supabase = await createClient();
 
     let query = supabase
@@ -29,7 +23,9 @@ async function MembersData({
         query = query.contains('trainings', [training]);
     }
 
-    if (role) {
+    if (role === 'Active Member') {
+        query = query.in('role', ['Active Member', 'Exec']);
+    } else if (role) {
         query = query.eq('role', role);
     }
 
