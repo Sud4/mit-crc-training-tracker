@@ -6,6 +6,14 @@ type MemberDataProps = {
     kerb:string;
 };
 
+const roleColors: Record<string, string> = {
+    "Exec": "text-exec",
+    "Active Member": "text-active",
+    "Inactive Member": "text-inactive",
+    "New Member": "text-new",
+    "Unc": "text-unc",
+}
+
 async function MemberData({kerb} : MemberDataProps) {
 
     const supabase = await createClient();
@@ -23,6 +31,8 @@ async function MemberData({kerb} : MemberDataProps) {
 
     let trainingsTxt = member.trainings.join(", ");
 
+    let colorClass = roleColors[member.role];
+
     if (trainingsTxt.length == 0) trainingsTxt = "No Trainings Yet";
 
     if(!member || member.length == 0) return <div className={"glass h-auto flex items-center justify-center mt-3"}>
@@ -34,6 +44,7 @@ async function MemberData({kerb} : MemberDataProps) {
             <div className={"info"}>
                 <h3>{member.name}</h3>
                 <h2>{member.kerb}</h2>
+                <h2 id="chip" className={colorClass}>{member.role}</h2>
             </div>
             <div className={"training-summary"}>
                 <h3>Summary of Trainings</h3>
@@ -49,6 +60,7 @@ async function MemberData({kerb} : MemberDataProps) {
                 <div className={"info"}>
                     <h3>{member.name}</h3>
                     <h2>{member.kerb}</h2>
+                    <h2 id="chip" className={colorClass}>{member.role}</h2>
                 </div>
                 <div className={"training-summary"}>
                     <h3>Summary of Trainings</h3>
